@@ -1,0 +1,6 @@
+rootProject.name = 'vmwareinterview'
+include 'merge'
+include 'concurrency'
+include 'drawing'
+include 'dbproject'
+

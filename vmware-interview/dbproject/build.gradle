@@ -1,0 +1,52 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'java'
+    
+    // If want to parser jsx at compiling stage instead of online at browser, uncomment below scripts
+    // id 'net.eikehirsch.react' version '0.4.1'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.vmware.interview.matthew'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.4.0'
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.4.0'
+
+    runtimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
+    runtimeOnly group: 'com.h2database', name: 'h2'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+/**
+ * If want to parser jsx at compiling stage instead of online at browser, uncomment below scripts
+ * */
+
+/*
+jsx {
+    sourcesDir = 'src/main/resources/static/js'
+    destDir    = 'out/production/resources/static/js'
+}
+
+task compileJsx(type: JSXTask) {
+    sourcesDir = 'src/main/resources/static/js'
+    destDir = 'build/resources/main/static/js'
+}
+
+assemble.dependsOn 'compileJsx'
+bootRun.dependsOn 'compileJsx'
+compileJsx.mustRunAfter(processResources) 
+ 
+ */

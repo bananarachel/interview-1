@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2019, Matthew Jiang. All rights reserved.
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{meta :: metablock}"></head>
+<body>
+
+<div th:insert="~{header :: head}"></div>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Welcome to the DB Project</h1>
+    </div>
+
+    <div>
+        <a th:href="@{~/service}">All Services</a>
+    </div>
+    <div>
+        <a th:href="@{~/customer}">All Customer</a>
+    </div>
+
+</div>
+
+<div th:insert="~{footer :: foot}"></div>
+
+</body>
+</html>

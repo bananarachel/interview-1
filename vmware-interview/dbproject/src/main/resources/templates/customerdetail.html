@@ -1,0 +1,78 @@
+<!--
+  ~ Copyright (c) 2019, Matthew Jiang. All rights reserved.
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{meta :: metablock}"></head>
+<body>
+<div th:insert="~{header :: head}"></div>
+<div class="container">
+    <div class="page-header">
+        <h1>Customer Detail Page</h1>
+    </div>
+
+    <div th:if="${customer} != null">
+        <h3><span>Customer </span><span th:text="${customer.customerName}"></span><span> Subscribed Services:</span>
+        </h3>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>Service ID</td>
+            <td>Service Name</td>
+            <td>Service Info</td>
+            <td>Service Detail</td>
+        </tr>
+        <tr th:each="service: ${subscribeServices}">
+            <td th:text="${service.id}">Service ID</td>
+            <td th:text="${service.serviceName}">Service Name</td>
+            <td th:text="${service.serviceInfo}">Service Info</td>
+            <td><a th:href="@{~/service/detail(serviceId=${service.id})}">service</a></td>
+        </tr>
+    </table>
+
+    <div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subscribeNewService">
+            Subscribe
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="subscribeNewService" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Subscribe Service</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form name="subscribeForm" th:object="${subscribeServiceForm}" method="POST">
+                        <div class="modal-body">
+
+                            <input type="hidden" th:field="*{customerId}" th:value="${subscribeServiceForm.customerId}">
+                            <div class="form-group">
+                                <label for="service-name" class="col-form-label">Services:</label>
+                                <select class="custom-select" id="service-name" th:field="*{subscribeServiceId}">
+                                    <option th:each="service: ${allAvailableServices}" th:value="${service.id}"
+                                            th:utext="${service.serviceName}"/>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{footer :: foot}"></div>
+
+</body>
+</html>
