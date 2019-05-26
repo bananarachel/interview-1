@@ -5,7 +5,7 @@ This project including four submodules:
 * drawing - draw shape with pre/post processing
 * dbproject - a website to let customer subscribe service
 
-##Prerequisites
+## Prerequisites
 * [jdk 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - jdk version 1.8
 * [gradle 5.4.1](https://gradle.org/next-steps/?version=5.4.1&format=all) - gradle used for build
 * [nodejs & npm](https://nodejs.org/en/) - optional, npm for parser reactjs's jsx file
